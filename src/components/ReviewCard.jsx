@@ -7,15 +7,12 @@ import Comments from "./Comments";
 function ReviewCard() {
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [showComments, setShowComments] = useState(false);
-
   const { review_id } = useParams();
 
   useEffect(() => {
     getReviewId(review_id)
       .then((review) => {
         setReview(review.review);
-        // console.log(review)
         setIsLoading(false);
       })
       .catch((err) => {
@@ -35,22 +32,14 @@ function ReviewCard() {
               src={review.review_img_url}
               alt={`Review for ${review.title}`}
             />
-          <p className="ReviewTitle">{review.title}</p>
-          <p className="ReviewCategory">{review.category}</p>
-          <p className="ReviewBody">{review.review_body}</p>
-          <p className="ReviewDesigner">Owner: {review.owner}</p>
-          <p>Votes: {review.votes}</p>
+            <p className="ReviewTitle">{review.title}</p>
+            <p className="ReviewCategory">{review.category}</p>
+            <p className="ReviewBody">{review.review_body}</p>
+            <p className="ReviewDesigner">Owner: {review.owner}</p>
+            <p>Votes: {review.votes}</p>
           </li>
         </ul>
-        <button
-          onClick={() => {
-            showComments ? setShowComments(false) : setShowComments(true);
-          }}
-        >Show Comments </button>
-        <Comments
-        showComments={showComments}
-        setShowComments={setShowComments}
-        review_id={review_id}/>
+        <Comments review_id={review_id} />
       </div>
     );
   }
