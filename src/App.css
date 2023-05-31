@@ -1,36 +1,115 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* app */
+
+.App {
   text-align: center;
 }
 
-/* my css */
-
-.main-header {
-  position: absolute top;
-  text-align:center;
-  font-size: 1.5rem;
-  border: 2px solid;
-  padding: 0.5rem;
-  width: 20rem;
-  margin: 0 auto;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-/* reviews */
-.list-item {
-  list-style-type: none;
+
+/* :root? */
+
+/* Header */
+
+.App-header {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: "orbitron", sans-serif;
+  background-color: rgba(198, 226, 233, 0.95);
+  text-shadow: #d9aad0 -2px 2px;
 }
 
-.img{
+/* NavBar */
+.Bar{
+  position: fixed;
+  top: 0;
+  background-color: rgba(198, 226, 233, 0.95);
+  /* display: flex;
+  justify-content: space-between; */
+}
+
+/* Reviews and Review*/
+.img {
   width: 100%;
   height: auto;
   border-radius: 20px;
 }
 
-.reviewsList {
-  display: flex;
+.ReviewCard {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  display: inline-block;
+  /* display: flex;
+  align-items: center; */
   flex-direction: column;
-  flex-wrap: wrap;
+  border-radius: 20px;
+  background-color: rgba(198, 226, 233, 0.95);
+  box-shadow: 1px 1px 5px 1px black;
+  list-style-type: none;
 }
+
+.ReviewTitle{
+  padding: 0.5rem;
+  font-family: "orbitron", sans-serif;
+  font-weight: bold;
+}
+
+.ReviewCategory{
+  padding: 0.5rem;
+  font-family: "orbitron", sans-serif;
+}
+
+.ReviewDesigner{
+  padding: 0.5rem;
+  font-family: "orbitron", sans-serif;
+  font-size: smaller;
+  font-style: italic;
+}
+
+.ReviewBody{
+  padding: 0.5rem;
+  border-style: none;
+  background-color: #edddeb;
+  border-radius: 20px;
+}
+
+/* ReviewCard */
+.ReviewCardSingle{
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: rgba(198, 226, 233, 0.95);
+  box-shadow: 1px 1px 5px 1px black;
+
+  /* margin-left: 9rem;
+  margin-right: 9rem;
+  margin-top: 1rem;
+  display: inline-block;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: rgba(198, 226, 233, 0.95);
+  box-shadow: 1px 1px 5px 1px black;
+  list-style-type: none; */
+}
+/* Comments */
+
+/* CommentAdder */
+
+/* CategorySort */
+
+/* Users */
+
+/* Media Queries */
+
+/* Error Handling */

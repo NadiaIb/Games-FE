@@ -7,7 +7,6 @@ function Reviews() {
   const [isLoadingReviews, setIsLoadingReviews] = useState(true);
 
   useEffect(() => {
-    setIsLoadingReviews(true);
     getReviews()
       .then((reviews) => {
         setListReviews(reviews);
@@ -23,17 +22,18 @@ function Reviews() {
   } else {
     return (
       <section>
-        <h2> All reviews ({listReviews.length}) </h2>
+        <h2> All Reviews ({listReviews.length}) </h2>
         {listReviews.map((review) => {
           return (
-            <ul key={review.review_id} className="list-item reviewsList">
-              <li> {review.title}</li>
+            <ul key={review.review_id} className="ReviewCard">
               <li>
                 {" "}
-                <img className="img" src={review.review_img_url} alt="" />{" "}
+                <img className="img" src={review.review_img_url} alt={review.review_img_url} />{" "}
+              <li className="ReviewTitle"> {review.title}</li>
               </li>
-              <li> {review.category}</li>
-              <li> {review.review_body}</li>
+              <li className="ReviewCategory"> {review.category}</li>
+              <li className="ReviewDesigner"> Designed by: {review.designer}</li>
+              <a href={`/reviews/${review.review_id}`}> Read full review </a>
             </ul>
           );
         })}
