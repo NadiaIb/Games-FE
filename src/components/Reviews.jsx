@@ -4,36 +4,26 @@ import { getReviews, patchVotes } from "../../utils";
 function Reviews() {
   const [listReviews, setListReviews] = useState([]);
   const [isLoadingReviews, setIsLoadingReviews] = useState(true);
-  const [voteChange, setVoteChange] = useState(false);
+  const [voteChange, setVoteChange] = useState(0);
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     getReviews()
       .then((reviews) => {
-        // console.log(reviews)
         setListReviews(reviews);
         setIsLoadingReviews(false);
       })
-      .catch((err) => {
-        //need to add err logic
-      });
-  }, []); //add category_slug, sort_by, order
+      .catch((err) => {});
+  }, []);
 
   const handleVotes = (idNum) => {
-    patchVotes(idNum);
-    if (!voteChange) {
-      setListReviews((currReviews)=>{
-       return currReviews.map((review)=>{
-          if(review.review_id === idNum){
-            return{...review, votes: review.votes + 1}
-          }
-          console.log(review)
-          return review
-      })
-      })
-    }
-  };
-
-  // console.log(review.votes)
+    setVoteChange((selectedReview) => selectedReview + 1);
+    patchVotes(idNum)
+    .catch((err) => {
+      setVoteChange((selectedReview) => selectedReview - 1);
+      setErrorMessage("Issue with voting, please try again later")
+    })
+  }
 
   if (isLoadingReviews) {
     return <h2> Loading Reviews...</h2>;
@@ -62,7 +52,7 @@ function Reviews() {
                     handleVotes(review.review_id);
                   }}
                 >
-                  👍🏼
+                  👍🏼{review.votes + voteChange}
                 </button>
               </li>
               <a href={`/reviews/${review.review_id}`}> Read full review </a>

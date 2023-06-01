@@ -15,11 +15,9 @@ export const getReviews = () => {
 };
 
 export const getReviewId = (review_id) => {
-    // console.log(review_id)
     return GamesApi
     .get(`/reviews/${review_id}`)
     .then(( review ) => {
-        // console.log(review.data)
       return review.data;
     })
     .catch((err) => {
@@ -27,11 +25,12 @@ export const getReviewId = (review_id) => {
       });
   };
 
-export const patchVotes = (review_id, num) => {
+export const patchVotes = (review_id) => {
   return GamesApi
-  .patch(`/reviews/${review_id}`, {inc_votes: num})
+  .patch(`/reviews/${review_id}`, {inc_votes:1})
   .then((response)=>{
-    console.log(response)
     return response.data.review
-  })
+  }) .catch((err) => {
+    console.log(err);
+  });
 }
