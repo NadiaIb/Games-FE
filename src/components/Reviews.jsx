@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getReviews } from "../../utils";
+import { getReviews, patchVotes } from "../../utils";
 
 function Reviews() {
   const [listReviews, setListReviews] = useState([]);
@@ -18,16 +18,17 @@ function Reviews() {
       });
   }, []); //add category_slug, sort_by, order
 
-  const handleVotes = (review_id) => {
-    if(!voteChange){
-      setVoteChange((currVotes)=>{
-        currVotes + 1
-      })
+  const handleVotes = (idNum) => {
+    patchVotes(idNum);
+    if (!voteChange) {
+      setVoteChange((currVotes) => {
+        currVotes + 1;
+      });
     }
   };
-  
+
   // console.log(review.votes)
-  
+
   if (isLoadingReviews) {
     return <h2> Loading Reviews...</h2>;
   } else {
@@ -45,11 +46,18 @@ function Reviews() {
                   alt={review.review_img_url}
                 />{" "}
                 <p className="ReviewTitle"> {review.title}</p>
-              <p className="ReviewCategory"> {review.category}</p>
-              <p className="ReviewDesigner">
-                {" "}
-                Designed by: {review.designer}</p>
-              <button onClick={handleVotes}>👍🏼</button>
+                <p className="ReviewCategory"> {review.category}</p>
+                <p className="ReviewDesigner">
+                  {" "}
+                  Designed by: {review.designer}
+                </p>
+                <button
+                  onClick={() => {
+                    handleVotes(review.review_id);
+                  }}
+                >
+                  👍🏼
+                </button>
               </li>
               <a href={`/reviews/${review.review_id}`}> Read full review </a>
             </ul>
