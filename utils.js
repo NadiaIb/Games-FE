@@ -26,3 +26,12 @@ export const getReviewId = (review_id) => {
         // console.log(err);
       });
   };
+
+export const patchVotes = (review_id, num) => {
+  return GamesApi
+  .patch(`/reviews/${review_id}`, {inc_votes: num})
+  .then((response)=>{
+    // console.log(response)
+    return response.data.review
+  })
+}
