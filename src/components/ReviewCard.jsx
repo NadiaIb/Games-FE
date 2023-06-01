@@ -20,7 +20,7 @@ function ReviewCard() {
       .catch((err) => {
         //err handling
       });
-  }, [review]);
+  }, [review_id]);
 
   if (isLoading) {
     return <h2> Loading Review Card...</h2>;

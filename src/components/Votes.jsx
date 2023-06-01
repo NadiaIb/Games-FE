@@ -8,14 +8,14 @@ function Votes({ review_id, votes, review }) {
   
   const handleVotes = (idNum) => {
     // console.log("handleVotes called");
-    setVoteChange((selectedReview) => selectedReview + 1);
+    setVoteChange((currVote) => currVote + 1);
     patchVotes(idNum)
       .then(() => {
         // console.log("patchVotes success");
       })
       .catch((err) => {
         console.log("patchVotes error", err);
-        setVoteChange((selectedReview) => selectedReview - 1);
+        setVoteChange((currVote) => currVote - 1);
         setErrorMessage("Issue with voting, please try again later");
       });
   };
