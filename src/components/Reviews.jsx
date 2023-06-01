@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { getReviews, patchVotes } from "../../utils";
+import { getReviews } from "../../utils";
 
 function Reviews() {
   const [listReviews, setListReviews] = useState([]);
   const [isLoadingReviews, setIsLoadingReviews] = useState(true);
-  const [voteChange, setVoteChange] = useState(0);
-  const [errorMessage, setErrorMessage] = useState('')
+  // const [voteChange, setVoteChange] = useState(0);
+  // const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     getReviews()
@@ -16,14 +16,14 @@ function Reviews() {
       .catch((err) => {});
   }, []);
 
-  const handleVotes = (idNum) => {
-    setVoteChange((selectedReview) => selectedReview + 1);
-    patchVotes(idNum)
-    .catch((err) => {
-      setVoteChange((selectedReview) => selectedReview - 1);
-      setErrorMessage("Issue with voting, please try again later")
-    })
-  }
+  // const handleVotes = (idNum) => {
+  //   setVoteChange((selectedReview) => selectedReview + 1);
+  //   patchVotes(idNum)
+  //   .catch((err) => {
+  //     setVoteChange((selectedReview) => selectedReview - 1);
+  //     setErrorMessage("Issue with voting, please try again later")
+  //   })
+  // }
 
   if (isLoadingReviews) {
     return <h2> Loading Reviews...</h2>;
@@ -47,13 +47,14 @@ function Reviews() {
                   {" "}
                   Designed by: {review.designer}
                 </p>
-                <button
+                <p>Votes: {review.votes}</p>
+                {/* <button
                   onClick={() => {
                     handleVotes(review.review_id);
                   }}
                 >
-                  👍🏼{review.votes + voteChange}
-                </button>
+                  👍🏼 {review.votes + voteChange}
+                </button> */}
               </li>
               <a href={`/reviews/${review.review_id}`}> Read full review </a>
             </ul>

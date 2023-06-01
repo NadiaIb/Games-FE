@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getReviewId } from "../../utils";
 import { useState } from "react";
+import Votes from "./Votes";
 
 function ReviewCard() {
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
   let { review_id } = useParams();
 
   useEffect(() => {
@@ -38,8 +40,9 @@ function ReviewCard() {
           <li className="ReviewCategory">{review.category}</li>
           <li className="ReviewBody">{review.review_body}</li>
           <li className="ReviewDesigner">Owner: {review.owner}</li>
-          <li>Votes: {review.votes}</li>
+          {/* <li>Votes: {review.votes}</li> */}
         </ul>
+        <Votes review_id={review.review_id} votes={review.votes} review={review}/>
       </div>
     );
   }
