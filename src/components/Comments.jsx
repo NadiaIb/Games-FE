@@ -37,26 +37,29 @@ function Comments({ review_id }) {
 
   if (isLoading) {
     return <h2> Comments are loading </h2>;
+  } else {
+    return (
+      <section>
+        {showComments && (
+          <ul>
+            {currentComments.map((comment) => {
+              const date = new Date(comment.created_at);
+              const formattedDate = date.toLocaleString("en-GB");
+              return (
+                <li key={comment.comment_id}>
+                  <p>{comment.author}</p>
+                  <p>{comment.body}</p>
+                  <p>{comment.votes}</p>
+                  <p>Posted at: {formattedDate}</p>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        <button onClick={handleClick}>{buttonText}</button>
+      </section>
+    );
   }
-  return (
-    <section>
-      {showComments && (
-        <ul>
-          {currentComments.map((comment) => {
-            return (
-              <li key={comment.comment_id}>
-                <p>{comment.author}</p>
-                <p>{comment.body}</p>
-                <p>{comment.votes}</p>
-                <p>Posted at: {comment.created_at}</p>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-      <button onClick={handleClick}>{buttonText}</button>
-    </section>
-  );
 }
 
 export default Comments;
