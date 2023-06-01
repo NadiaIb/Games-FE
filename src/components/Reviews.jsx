@@ -21,9 +21,15 @@ function Reviews() {
   const handleVotes = (idNum) => {
     patchVotes(idNum);
     if (!voteChange) {
-      setVoteChange((currVotes) => {
-        currVotes + 1;
-      });
+      setListReviews((currReviews)=>{
+       return currReviews.map((review)=>{
+          if(review.review_id === idNum){
+            return{...review, votes: review.votes + 1}
+          }
+          console.log(review)
+          return review
+      })
+      })
     }
   };
 
