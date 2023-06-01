@@ -27,9 +27,35 @@ export const getReviewId = (review_id) => {
 export const getComments = (review_id) => {
   return GamesApi.get(`/reviews/${review_id}/comments`)
     .then((response) => {
-       return response.data.comments;
+      return response.data.comments;
     })
     .catch((err) => {
       console.log(err);
+    });
+};
+// app.get("/api/users", getUsers)
+
+export const getUsers = () => {
+  return GamesApi.get("/users")
+    .then((users) => {
+      // console.log(users)
+      return users.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const postComment = (review_id, body) => {
+  return GamesApi.post(`/reviews/${review_id}/comments`, {
+    username: body.username,
+    body: body.body,
+  })
+    .then((response) => {
+      // console.log(response)
+      return response;
+    })
+    .catch((err) => {
+      // console.log(err);
     });
 };

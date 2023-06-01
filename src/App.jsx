@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar"
 import Header from './components/Header'
 import Reviews from './components/Reviews'
 import ReviewCard from './components/ReviewCard'
+import Users from './components/Users'
 
 function App() {
 
@@ -15,8 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Reviews/>} />
         <Route path="/reviews/:review_id" element={<ReviewCard/>} />
-        {/* <Route path="/users" element={<Users/>} />
-        <Route path="/users-login" element={<Users/>} /> */}
+        <Route path="/users" element={<Users/>} />
+        {/* <Route path="/users-login" element={<Users/>} /> */}
       </Routes>
     </div>
   </BrowserRouter>

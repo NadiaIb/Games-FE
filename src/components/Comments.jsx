@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getComments } from "../../api";
+import CommentAdder from "./CommentAdder";
 
 function Comments({ review_id }) {
   const [showComments, setShowComments] = useState(false);
@@ -57,6 +58,12 @@ function Comments({ review_id }) {
           </ul>
         )}
         <button onClick={handleClick}>{buttonText}</button>
+        <CommentAdder
+          showComments={showComments}
+          setShowComments={setShowComments}
+          setCurrentComments={setCurrentComments}
+          currentComments={currentComments}
+        />
       </section>
     );
   }
