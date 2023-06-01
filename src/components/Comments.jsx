@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getComments } from "../../utils";
+import { getComments } from "../../api";
 
 function Comments({ review_id }) {
   const [showComments, setShowComments] = useState(false);
@@ -8,11 +8,11 @@ function Comments({ review_id }) {
 
   useEffect(() => {
     getComments(review_id)
-    .then((comment) => {
-      setCurrentComments(comment);
-      setIsLoading(false)
-    })
-    .catch((err) => {
+      .then((comment) => {
+        setCurrentComments(comment);
+        setIsLoading(false);
+      })
+      .catch((err) => {
         //err handling
       });
   }, [review_id]);
@@ -35,8 +35,8 @@ function Comments({ review_id }) {
     buttonText = "Hide comments";
   }
 
-  if(isLoading){
-   return <h2> Comments are loading </h2>
+  if (isLoading) {
+    return <h2> Comments are loading </h2>;
   }
   return (
     <section>

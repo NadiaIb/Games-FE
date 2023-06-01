@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getReviewId } from "../../utils";
+import { getReviewId } from "../../api";
 import { useState } from "react";
 import Comments from "./Comments";
 
