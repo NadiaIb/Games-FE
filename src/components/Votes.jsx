@@ -1,30 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { patchVotes } from "../../utils";
 
-function Votes({ review_id, votes, review }) {
+function Votes({ review_id, review }) {
   const [voteChange, setVoteChange] = useState(0);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorStatus, setErrorStatus] = useState(false);
 
   const handleVotes = (idNum) => {
     setVoteChange((currVote) => currVote + 1);
-    patchVotes(idNum)
-    .catch((err) => {
+    patchVotes(idNum).catch((err) => {
       setVoteChange((currVote) => currVote - 1);
-      setErrorMessage("Issue with voting, please try again later");
+      setErrorStatus(true);
     });
   };
 
+  if (errorStatus) {
+    return <p>Issue with voting, please try again later</p>;
+  }
+
   return (
-    <button
-      onClick={() => {
-        handleVotes(review_id);
-      }}
-      disabled={voteChange !== 0}
-    >
-      <span aria-label="Up vote this review">
-        👍🏽 {review.votes + voteChange}
-      </span>
-    </button>
+    <section>
+      <button
+        onClick={() => {
+          handleVotes(review_id);
+        }}
+        disabled={voteChange !== 0}
+      >
+        <span aria-label="Up vote this review">
+          👍🏽 {review.votes + voteChange}
+        </span>
+      </button>
+    </section>
   );
 }
 export default Votes;

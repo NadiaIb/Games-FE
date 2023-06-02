@@ -30,7 +30,5 @@ export const patchVotes = (review_id) => {
   .patch(`/reviews/${review_id}`, {inc_votes:1})
   .then((response)=>{
     return response.data.review
-  }) .catch((err) => {
-    console.log(err);
-  });
+  })
 }

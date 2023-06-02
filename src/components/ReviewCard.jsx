@@ -42,7 +42,7 @@ function ReviewCard() {
           <li className="ReviewDesigner">Owner: {review.owner}</li>
           {/* <li>Votes: {review.votes}</li> */}
         </ul>
-        <Votes review_id={review.review_id} votes={review.votes} review={review}/>
+        <Votes review_id={review.review_id} review={review}/>
       </div>
     );
   }
