@@ -9,19 +9,19 @@ function Comments({ review_id }) {
 
   useEffect(() => {
     getComments(review_id)
-      .then((comment) => {
-        setCurrentComments(comment);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        //err handling
-      });
+    .then((comment) => {
+      setCurrentComments(comment);
+      setIsLoading(false);
+    })
+    .catch((err) => {
+      //err handling
+    });
   }, [review_id]);
-
+  
   const handleClick = () => {
     setShowComments(!showComments);
   };
-
+  
   let buttonText;
   if (!showComments) {
     if (currentComments.length === 1) {
@@ -35,7 +35,7 @@ function Comments({ review_id }) {
   } else {
     buttonText = "Hide comments";
   }
-
+  
   if (isLoading) {
     return <h2> Comments are loading </h2>;
   } else {
@@ -59,11 +59,8 @@ function Comments({ review_id }) {
         )}
         <button onClick={handleClick}>{buttonText}</button>
         <CommentAdder
-          // review_id={review_id}
-          showComments={showComments}
           setShowComments={setShowComments}
           setCurrentComments={setCurrentComments}
-          currentComments={currentComments}
         />
       </section>
     );
