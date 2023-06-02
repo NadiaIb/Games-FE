@@ -5,12 +5,9 @@ function NavBar() {
     <nav className="Bar">
       <ul> 
         <li><Link to="/reviews">Reviews</Link></li>
-        {/* <li>
+        <li>
           <Link to="/users"> Users </Link>
         </li>
-        <li>
-            <Link to="/users-login"> Login </Link>
-        </li> */}
       </ul>
     </nav>
   );
