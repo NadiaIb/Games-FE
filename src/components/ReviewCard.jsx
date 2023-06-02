@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getReviewId } from "../../api";
 import { useState } from "react";
+import Votes from "./Votes";
 import Comments from "./Comments";
 
 function ReviewCard() {
@@ -40,6 +41,7 @@ function ReviewCard() {
             <p>Votes: {review.votes}</p>
           </li>
         </ul>
+        <Votes review_id={review.review_id} review={review}/>
         <Comments review_id={review_id} />
       </div>
     );

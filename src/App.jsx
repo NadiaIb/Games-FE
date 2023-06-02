@@ -14,7 +14,7 @@ function App() {
         <NavBar/>
         <Header/>
       <Routes>
-        <Route path="/" element={<Reviews/>} />
+        <Route path="/reviews" element={<Reviews/>} />
         <Route path="/reviews/:review_id" element={<ReviewCard/>} />
         <Route path="/users" element={<Users/>} />
         {/* <Route path="/users-login" element={<Users/>} /> */}
