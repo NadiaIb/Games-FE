@@ -38,7 +38,7 @@ function ReviewCard() {
             <p className="ReviewCategory">{review.category}</p>
             <p className="ReviewBody">{review.review_body}</p>
             <p className="ReviewDesigner">Owner: {review.owner}</p>
-            <p>Votes: {review.votes}</p>
+            {/* <p>Votes: {review.votes}</p> */}
           </li>
         </ul>
         <Votes review_id={review.review_id} review={review}/>

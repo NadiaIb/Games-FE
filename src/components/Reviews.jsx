@@ -4,8 +4,6 @@ import { getReviews } from "../../api";
 function Reviews() {
   const [listReviews, setListReviews] = useState([]);
   const [isLoadingReviews, setIsLoadingReviews] = useState(true);
-  // const [voteChange, setVoteChange] = useState(0);
-  // const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     getReviews()
@@ -38,13 +36,6 @@ function Reviews() {
                   Designed by: {review.designer}
                 </p>
                 <p>Votes: {review.votes}</p>
-                {/* <button
-                  onClick={() => {
-                    handleVotes(review.review_id);
-                  }}
-                >
-                  👍🏼 {review.votes + voteChange}
-                </button> */}
                 <a href={`/reviews/${review.review_id}`}> Read full review </a>
               </li>           
               
