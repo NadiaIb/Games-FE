@@ -52,10 +52,10 @@ export const postComment = (review_id, body) => {
     body: body.body,
   })
     .then((response) => {
-      // console.log(response)
+      console.log(response.data)
       return response;
     })
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
     });
 };

@@ -59,6 +59,7 @@ function Comments({ review_id }) {
         )}
         <button onClick={handleClick}>{buttonText}</button>
         <CommentAdder
+          // review_id={review_id}
           showComments={showComments}
           setShowComments={setShowComments}
           setCurrentComments={setCurrentComments}

@@ -7,6 +7,7 @@ import Comments from "./Comments";
 function ReviewCard() {
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  
   const { review_id } = useParams();
 
   useEffect(() => {
