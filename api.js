@@ -58,3 +58,24 @@ export const postComment = (review_id, body) => {
     //   console.log(err);
     // });
 };
+
+export const patchVotes = (review_id) => {
+  return GamesApi
+  .patch(`/reviews/${review_id}`, {inc_votes:1})
+  .then((response)=>{
+    return response.data.review
+  })
+}
+
+export const getCategories = () =>{
+  return GamesApi
+  .get("/categories")
+  .then((response)=>{
+    // console.log(response.data.category)
+    return response.data.category
+  })
+  // .catch((err)=>{
+  //   console.log(err)
+  // })
+}
+
