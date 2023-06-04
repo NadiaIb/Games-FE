@@ -54,7 +54,7 @@ export const postComment = (review_id, body) => {
     .then((response) => {
       return response.data;
     })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
+    .catch(()=>{
+      console.log(error)
+    })
 };
