@@ -6,9 +6,11 @@ import CategorySort from "./CategorySort";
 function Reviews() {
   const [listReviews, setListReviews] = useState([]);
   const [isLoadingReviews, setIsLoadingReviews] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState("")
+  // const [searchParams, setSearchParams] = useSearchParams();
+
 
   useEffect(() => {
+    setIsLoadingReviews(true)
     getReviews()
       .then((reviews) => {
         setListReviews(reviews);
@@ -17,13 +19,18 @@ function Reviews() {
       .catch((err) => {});
   }, []);
 
+  // const updateFilteredReviews = (filteredReviews) => {
+  //   setListReviews(filteredReviews)
+  // }
+
   if (isLoadingReviews) {
     return <h2> Loading Reviews...</h2>;
   } else {
     return (
       <section>
         <h2> All Reviews ({listReviews.length}) </h2>
-        <CategorySort setIsLoadingReviews={setIsLoadingReviews} listReviews={listReviews} setListReviews={setListReviews}/>
+        {/* Pass the callback function to update filtered reviews */}
+        <CategorySort setIsLoadingReviews={setIsLoadingReviews} listReviews={listReviews} setListReviews={setListReviews}/> 
         <ul>
           {listReviews.map((review) => {
             return (

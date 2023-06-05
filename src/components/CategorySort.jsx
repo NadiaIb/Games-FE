@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { getCategories } from "../../api";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CategorySort = ({ setIsLoadingReviews, listReviews, setListReviews }) => {
   const [categoryList, setCategoryList] = useState([]);
-  const [selectedCategories, setSelectedCategories] = useState("");
+  // const [selectedCategories, setSelectedCategories] = useState("");
+  // const navigate = useNavigate();
+
 
   useEffect(() => {
     getCategories().then((categories) => {
@@ -13,15 +15,17 @@ const CategorySort = ({ setIsLoadingReviews, listReviews, setListReviews }) => {
     .then(() => {
       setIsLoadingReviews(false);
     });
-  }, [selectedCategories]);
+  }, [setIsLoadingReviews]);
 
+  
   const handleClick = (slug) => {
     const filteredReviewsCategory = listReviews.filter((review) => {
       return review.category === slug;
     });
     setListReviews(filteredReviewsCategory)
+
   };
-  
+
   
   return (
     <section>
@@ -46,6 +50,7 @@ const CategorySort = ({ setIsLoadingReviews, listReviews, setListReviews }) => {
 };
 
 
-//add logic so when category is clicked it will show only those clicked
+// //add logic so when category is clicked it will show only those clicked
+
 
 export default CategorySort;
