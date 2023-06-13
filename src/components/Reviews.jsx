@@ -21,17 +21,14 @@ function Reviews() {
 
   const handleSortChange = (event) => {
     const sortByValue = event.target.value;
-
     // copy existing queries to avoid mutation
     const newParams = new URLSearchParams(searchParams);
-  
     // set the sort_by query
     if (sortByValue) {
       newParams.set("sort_by", sortByValue);
     } else {
       newParams.delete("sort_by");
     }
-  
     // update the search params
     setSearchParams(newParams);
   };
