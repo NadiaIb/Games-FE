@@ -27,9 +27,9 @@ npm run dev
 ```
 
 ## Dependencies
-• React
-• React-DOM
-• React-Router-DOM
-• Axios
-• Vite
-• ESLint
+- React
+- React-DOM
+- React-Router-DOM
+- Axios
+- Vite
+- ESLint
