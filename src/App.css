@@ -26,7 +26,7 @@
 }
 
 /* NavBar */
-.Bar{
+.Bar {
   position: fixed;
   top: 0;
   background-color: rgba(198, 226, 233, 0.95);
@@ -51,7 +51,7 @@
   background-color: rgba(198, 226, 233, 0.95);
   box-shadow: 1px 1px 5px 1px black;
   list-style-type: none;
-} 
+}
 /* 
 .ReviewCard {
   display: flex;
@@ -64,33 +64,57 @@
   list-style-type: none;
 }  */
 
-.ReviewTitle{
+.ReviewTitle {
   padding: 0.5rem;
   font-family: "orbitron", sans-serif;
   font-weight: bold;
 }
 
-.ReviewCategory{
+.ReviewCategory {
   padding: 0.5rem;
   font-family: "orbitron", sans-serif;
 }
 
-.ReviewDesigner{
+.ReviewDesigner {
   padding: 0.5rem;
   font-family: "orbitron", sans-serif;
   font-size: smaller;
   font-style: italic;
 }
 
-.ReviewBody{
+.ReviewBody {
   padding: 0.5rem;
   border-style: none;
   background-color: #edddeb;
   border-radius: 20px;
 }
 
+.sortContainer {
+  display: flex;
+  align-items: center;
+}
+
+.orderButton {
+  background-color: rgb(246, 183, 229);
+  border-radius: 20px;
+  font-size: 16px;
+  margin-left: 0.5%;
+}
+
+.orderButton:hover {
+  transform: scale(1.1);
+}
+
+.sortButton {
+  font-size: 16px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  display: flex;
+  margin-left: 20px;
+}
+
 /* ReviewCard */
-.ReviewCardSingle{
+.ReviewCardSingle {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   margin-top: 2rem;

@@ -61,14 +61,16 @@ function Reviews() {
   } else {
     return (
       <section>
-        <select onChange={(event) => handleSortChange(event)}>
+        <div className="sortContainer">
+        <select className="sortButton" onChange={(event) => handleSortChange(event)}>
           <option value="">Sort By</option>
           <option value="created_at">Date</option>
           <option value="votes">Votes</option>
           <option value="title">Title</option>
         </select>
-        <button onClick={() => setSortOrder("asc")}>⬆</button>
-        <button onClick={() => setSortOrder("desc")}>⬇</button>
+        <button className="orderButton" onClick={() => setSortOrder("asc")}>⬆</button>
+        <button className="orderButton" onClick={() => setSortOrder("desc")}>⬇</button>
+       </div>
         <h2> All Reviews ({listReviews.length}) </h2>
         <ul>
           {listReviews.map((review) => {
