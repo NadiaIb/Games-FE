@@ -36,7 +36,7 @@
 
 /* Reviews and Review*/
 .img {
-  width: 100%;
+  width: 60%;
   height: auto;
   border-radius: 20px;
 }
@@ -46,14 +46,23 @@
   margin-right: 0.5rem;
   margin-top: 1rem;
   display: inline-block;
-  /* display: flex;
-  align-items: center; */
   flex-direction: column;
   border-radius: 20px;
   background-color: rgba(198, 226, 233, 0.95);
   box-shadow: 1px 1px 5px 1px black;
   list-style-type: none;
-}
+} 
+/* 
+.ReviewCard {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 30%;
+  border-radius: 20px;
+  background-color: rgba(198, 226, 233, 0.95);
+  box-shadow: 1px 1px 5px 1px black;
+  list-style-type: none;
+}  */
 
 .ReviewTitle{
   padding: 0.5rem;

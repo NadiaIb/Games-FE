@@ -27,7 +27,7 @@ function ReviewCard() {
   } else {
     return (
       <div className="ReviewCard">
-        <ul>
+        <ul >
           <li>
             <img
               className="img"
