@@ -7,56 +7,68 @@ function Reviews() {
   const [isLoadingReviews, setIsLoadingReviews] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const sortByQuery = searchParams.get("sort_by"); // "title"
-    const orderQuery = searchParams.get('order'); // "title"
-
-  useEffect(() => {
-    getReviews()
-      .then((reviews) => {
-        setListReviews(reviews);
-        setIsLoadingReviews(false);
-      })
-      .catch((err) => {});
-  }, [sortByQuery,orderQuery]);
+  let sortByQuery = searchParams.get("sort_by");
+  let orderQuery = searchParams.get("order");
 
   const handleSortChange = (event) => {
     const sortByValue = event.target.value;
-    // copy existing queries to avoid mutation
     const newParams = new URLSearchParams(searchParams);
-    // set the sort_by query
     if (sortByValue) {
       newParams.set("sort_by", sortByValue);
+      newParams.set("order", "desc"); 
     } else {
       newParams.delete("sort_by");
     }
-    // update the search params
     setSearchParams(newParams);
   };
   
   const setSortOrder = (direction) => {
-    // copy existing queries to avoid mutation
     const newParams = new URLSearchParams(searchParams);
-    // set the order query
-    newParams.set('order', direction);
+    newParams.set("order", direction);
     setSearchParams(newParams);
   };
 
+  useEffect(() => {
+    getReviews()
+    .then((reviews) => {
+      if (sortByQuery && orderQuery) {
+        const sortedReviews = [...reviews].sort((a, b) => {
+          if (sortByQuery === "created_at") {
+            return orderQuery === "desc" ? new Date(b.created_at) - new Date(a.created_at) : new Date(a.created_at) - new Date(b.created_at);
+          } else if (sortByQuery === "votes") {
+            return orderQuery === "desc"
+            ? b.votes - a.votes
+            : a.votes - b.votes;
+          } else if (sortByQuery === "title") {
+            return orderQuery === "desc"
+            ? b.title.localeCompare(a.title)
+            : a.title.localeCompare(b.title);
+          }
+        });
+        setListReviews(sortedReviews);
+      } else {
+        setListReviews(reviews);
+      }
+      setIsLoadingReviews(false);
+    })
+    .catch((err) => {});
+  }, [sortByQuery, orderQuery]);
+  
 
+  
   if (isLoadingReviews) {
     return <h2> Loading Reviews...</h2>;
   } else {
     return (
       <section>
-        <select onChange={handleSortChange}>
+        <select onChange={(event) => handleSortChange(event)}>
           <option value="">Sort By</option>
           <option value="created_at">Date</option>
           <option value="votes">Votes</option>
           <option value="title">Title</option>
         </select>
-
         <button onClick={() => setSortOrder("asc")}>⬆</button>
         <button onClick={() => setSortOrder("desc")}>⬇</button>
-
         <h2> All Reviews ({listReviews.length}) </h2>
         <ul>
           {listReviews.map((review) => {
