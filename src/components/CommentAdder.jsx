@@ -24,8 +24,8 @@ function CommentAdder({ setShowComments, setCurrentComments }) {
     };
     postComment(review_id, commentToPost)
       .then((response) => {
-        setCurrentComments((originalComments) => {
-          return [response.comment, ...originalComments];
+        setCurrentComments((currentComments) => {
+          return [response.comment, ...currentComments];
         });
         setUserComment("");
       })
