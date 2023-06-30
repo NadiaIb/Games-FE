@@ -4,8 +4,8 @@ const GamesApi = axios.create({
   baseURL: "https://nc-games-1ybo.onrender.com/api",
 });
 
-export const getReviews = (categorySlug) => {
-  return GamesApi.get("/reviews",{ params: { category: categorySlug } })
+export const getReviews = (category_slug) => {
+  return GamesApi.get("/reviews",{ params: { category: category_slug } })
     .then(({ data }) => {
       return data.review;
     })
