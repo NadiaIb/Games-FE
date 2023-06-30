@@ -4,9 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 const CategorySort = ({ setIsLoadingReviews, listReviews, setListReviews }) => {
   const [categoryList, setCategoryList] = useState([]);
-  // const [selectedCategories, setSelectedCategories] = useState("");
-  // const navigate = useNavigate();
-
 
   useEffect(() => {
     getCategories().then((categories) => {
@@ -16,17 +13,17 @@ const CategorySort = ({ setIsLoadingReviews, listReviews, setListReviews }) => {
       setIsLoadingReviews(false);
     });
   }, [setIsLoadingReviews]);
-
   
-  const handleClick = (slug) => {
-    const filteredReviewsCategory = listReviews.filter((review) => {
-      return review.category === slug;
-    });
-    setListReviews(filteredReviewsCategory)
 
-  };
+  //   const handleClick = (slug) => {
+  //   const copyReview = [...listReviews]
+  //   const filteredReviewsCategory = copyReview.filter((review) => {
+  //     return review.category === slug;
+  //   });
+  //   setListReviews(filteredReviewsCategory)
 
-  
+  // };
+
   return (
     <section>
       <p>Select a Category</p>
@@ -36,8 +33,8 @@ const CategorySort = ({ setIsLoadingReviews, listReviews, setListReviews }) => {
             <li key={category.slug}>
               <Link
                 to={`/categories/${category.slug}`}
-                onClick={() => {
-                  handleClick(category.slug)}}
+                // onClick={() => {
+                //   handleClick(category.slug)}}
               >
                 {category.slug} games
               </Link>
@@ -48,6 +45,8 @@ const CategorySort = ({ setIsLoadingReviews, listReviews, setListReviews }) => {
     </section>
   );
 };
+
+
 
 
 // //add logic so when category is clicked it will show only those clicked

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../../api";
 import CategorySort from "./CategorySort";
+import { useParams } from "react-router-dom";
 
 
 function Reviews() {
@@ -8,16 +9,17 @@ function Reviews() {
   const [isLoadingReviews, setIsLoadingReviews] = useState(true);
   // const [searchParams, setSearchParams] = useSearchParams();
 
+  const { category_slug } = useParams();
 
   useEffect(() => {
     setIsLoadingReviews(true)
-    getReviews()
+    getReviews(category_slug)
       .then((reviews) => {
         setListReviews(reviews);
         setIsLoadingReviews(false);
       })
       .catch((err) => {});
-  }, []);
+  }, [category_slug]);
 
   // const updateFilteredReviews = (filteredReviews) => {
   //   setListReviews(filteredReviews)
