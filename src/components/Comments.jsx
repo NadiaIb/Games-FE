@@ -41,6 +41,10 @@ function Comments({ review_id }) {
   } else {
     return (
       <section>
+         <CommentAdder
+          setShowComments={setShowComments}
+          setCurrentComments={setCurrentComments}
+        />
         {showComments && (
           <ul>
             {currentComments.map((comment) => {
@@ -58,10 +62,6 @@ function Comments({ review_id }) {
           </ul>
         )}
         <button onClick={handleClick}>{buttonText}</button>
-        <CommentAdder
-          setShowComments={setShowComments}
-          setCurrentComments={setCurrentComments}
-        />
       </section>
     );
   }

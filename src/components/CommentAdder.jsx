@@ -12,6 +12,10 @@ function CommentAdder({ setShowComments, setCurrentComments }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    if((/^\s/).test(userComment)){
+      alert("Please enter a valid comment.");
+      return;
+    }
     setIsSubmitting(true);
 
     const commentToPost = {
