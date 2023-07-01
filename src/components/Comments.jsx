@@ -4,12 +4,6 @@ import CommentAdder from "./CommentAdder";
 
 function Comments({
   review_id,
-  isUserLoggedIn,
-  setIsUserLoggedIn,
-  user,
-  setUser,
-  userList,
-  setUserList,
   userId
 }) {
   const [showComments, setShowComments] = useState(false);
@@ -45,19 +39,6 @@ function Comments({
     buttonText = "Hide comments";
   }
 
-  // const handleDelete = (event) => {
-  //   const commentId = event.target.value; // Extract the comment ID from the event object
-  //   deleteComment(commentId)
-  //     .then(() => 
-  //     {
-  //       setCurrentComments((prevComments) =>
-  //         prevComments.filter((comment) => comment.comment_id !== commentId)
-  //       );
-  //     })
-  //     .catch((err) => {
-  //       // Handle error
-  //     });
-  // };
   
   const handleDeleteComment = (comment_id) => {
     setCurrentComments((comments) => {

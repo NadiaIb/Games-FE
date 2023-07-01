@@ -5,19 +5,10 @@ import { useState } from "react";
 import Votes from "./Votes";
 import Comments from "./Comments";
 
-function ReviewCard({ 
-  isUserLoggedIn,
-  setIsUserLoggedIn,
-  user,
-  setUser,
-  userList,
-  setUserList,
-  userId
-}
-) {
+function ReviewCard({ userId }) {
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const { review_id } = useParams();
 
   useEffect(() => {
@@ -36,7 +27,7 @@ function ReviewCard({
   } else {
     return (
       <div className="ReviewCard">
-        <ul >
+        <ul>
           <li>
             <img
               className="img"
@@ -47,11 +38,10 @@ function ReviewCard({
             <p className="ReviewCategory">{review.category}</p>
             <p className="ReviewBody">{review.review_body}</p>
             <p className="ReviewDesigner">Owner: {review.owner}</p>
-            {/* <p>Votes: {review.votes}</p> */}
           </li>
         </ul>
-        <Votes review_id={review.review_id} review={review}/>
-        <Comments userId={userId} review_id={review_id} isUserLoggedIn={isUserLoggedIn} setIsUserLoggedIn={setIsUserLoggedIn} user={user} setUserList={setUserList} userList={userList} setUser={setUser}/>
+        <Votes review_id={review.review_id} review={review} />
+        <Comments userId={userId} review_id={review_id} />
       </div>
     );
   }
