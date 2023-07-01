@@ -107,6 +107,7 @@ function Reviews() {
         <div className="sortContainer">
           {categories.map((category) => (
             <button
+              className="categoryItem"
               key={category}
               value={category}
               onClick={(event) => handleSelectedCategory(event)}
@@ -114,7 +115,10 @@ function Reviews() {
               {category}
             </button>
           ))}
-          <button onClick={(event) => handleSelectedCategory(event)}>
+          <button
+            className="categoryItem"
+            onClick={(event) => handleSelectedCategory(event)}
+          >
             All Reviews
           </button>
 
@@ -148,7 +152,9 @@ function Reviews() {
                 <p className="ReviewCategory">{review.category}</p>
                 <p className="ReviewDesigner">Designed by: {review.designer}</p>
                 <p>Votes: {review.votes}</p>
-                <a href={`/reviews/${review.review_id}`}>Read full review</a>
+                <button className="readFullReview">
+                  <a href={`/reviews/${review.review_id}`}>Read full review</a>
+                </button>
               </li>
             );
           })}
