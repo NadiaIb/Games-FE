@@ -56,8 +56,8 @@ export const postComment = (review_id, body) => {
     .then((response) => {
       return response.data;
     })
-    .catch(() => {
-      console.log(error);
+    .catch((err) => {
+      console.log(err);
     });
 };
 
@@ -68,3 +68,20 @@ export const patchVotes = (review_id) => {
     }
   );
 };
+
+export const deleteComment = (comment_id) => {
+  console.log("Deleting comment with ID:", comment_id);
+  return GamesApi.delete(`/comments/${comment_id}`);
+};
+
+// export const deleteComment = (comment_id) => {
+//   return GamesApi.delete(`/comments/${comment_id}`)
+//   .then(
+//     (response) => {
+//       console.log(response)
+//       return response.data
+//     })
+//     .catch((err)=> {
+//       console.log(err)
+//     })
+//   }

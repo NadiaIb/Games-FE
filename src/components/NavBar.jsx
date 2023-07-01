@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ userId }) {
   return (
     <nav className="Bar">
-      <ul> 
-        <li> <Link to="/">Home</Link></li>
-        <li><Link to="/reviews">Reviews</Link></li>
+      <ul className="barUl">
         <li>
-          <Link to="/users"> Users </Link>
+          {" "}
+          <Link to="/">Home</Link>
         </li>
-        {/* <li> 
-          <Link to="/categories">Categories</Link>
-        </li> */}
+        <li>
+          <Link to="/reviews">Reviews</Link>
+        </li>
+        <p>User: {userId}</p>
       </ul>
     </nav>
   );
 }
 
-export default NavBar
+export default NavBar;
