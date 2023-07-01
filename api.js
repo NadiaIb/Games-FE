@@ -4,7 +4,6 @@ const GamesApi = axios.create({
   baseURL: "https://nc-games-1ybo.onrender.com/api",
 });
 
-
 export const getReviews = (category, sort_by, order) => {
   return GamesApi.get("/reviews", {
     params: { category: category, sort_by: sort_by, order: order },
@@ -63,29 +62,9 @@ export const postComment = (review_id, body) => {
 };
 
 export const patchVotes = (review_id) => {
-  return GamesApi
-  .patch(`/reviews/${review_id}`, {inc_votes:1})
-  .then((response)=>{
-    return response.data.review
-  })
-}
-
-export const getCategories = () =>{
-  return GamesApi
-  .get("/categories")
-  .then((response)=>{
-    // console.log(response.data.category)
-    return response.data.category
-  })
-  // .catch((err)=>{
-  //   console.log(err)
-  // })
-}
-
-// const getReviewsByCategory = (category) => {
-//   return gamesApi.get(`/reviews?category=${category}`).then((response) => {
-//     // console.log(response.data);
-//     console.log(response.data);
-//     return response.data;
-//   });
-// };
+  return GamesApi.patch(`/reviews/${review_id}`, { inc_votes: 1 }).then(
+    (response) => {
+      return response.data.review;
+    }
+  );
+};

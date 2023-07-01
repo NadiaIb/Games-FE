@@ -19,7 +19,7 @@ function App() {
         <Route path="/reviews" element={<Reviews/>} />
         <Route path="/reviews/:review_id" element={<ReviewCard/>} />
         <Route path="/users" element={<Users/>} />
-        <Route path="/categories/:category_slug" element={<Reviews/>}></Route>
+        {/* <Route path="/categories" element={<SortCategory/>} /> */}
         {/* <Route path="/users-login" element={<Users/>} /> */}
       </Routes>
     </div>

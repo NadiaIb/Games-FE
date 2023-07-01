@@ -9,6 +9,9 @@ function NavBar() {
         <li>
           <Link to="/users"> Users </Link>
         </li>
+        {/* <li> 
+          <Link to="/categories">Categories</Link>
+        </li> */}
       </ul>
     </nav>
   );
