@@ -5,7 +5,16 @@ import { useState } from "react";
 import Votes from "./Votes";
 import Comments from "./Comments";
 
-function ReviewCard() {
+function ReviewCard({ 
+  isUserLoggedIn,
+  setIsUserLoggedIn,
+  user,
+  setUser,
+  userList,
+  setUserList,
+  userId
+}
+) {
   const [review, setReview] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   
@@ -42,7 +51,7 @@ function ReviewCard() {
           </li>
         </ul>
         <Votes review_id={review.review_id} review={review}/>
-        <Comments review_id={review_id} />
+        <Comments userId={userId} review_id={review_id} isUserLoggedIn={isUserLoggedIn} setIsUserLoggedIn={setIsUserLoggedIn} user={user} setUserList={setUserList} userList={userList} setUser={setUser}/>
       </div>
     );
   }

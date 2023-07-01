@@ -1,27 +1,36 @@
 import { useEffect, useState } from "react";
-import { getComments } from "../../api";
+import { getComments, deleteComment } from "../../api";
 import CommentAdder from "./CommentAdder";
 
-function Comments({ review_id }) {
+function Comments({
+  review_id,
+  isUserLoggedIn,
+  setIsUserLoggedIn,
+  user,
+  setUser,
+  userList,
+  setUserList,
+  userId
+}) {
   const [showComments, setShowComments] = useState(false);
   const [currentComments, setCurrentComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getComments(review_id)
-    .then((comment) => {
-      setCurrentComments(comment);
-      setIsLoading(false);
-    })
-    .catch((err) => {
-      //err handling
-    });
+      .then((comment) => {
+        setCurrentComments(comment);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        //err handling
+      });
   }, [review_id]);
-  
+
   const handleClick = () => {
     setShowComments(!showComments);
   };
-  
+
   let buttonText;
   if (!showComments) {
     if (currentComments.length === 1) {
@@ -35,13 +44,37 @@ function Comments({ review_id }) {
   } else {
     buttonText = "Hide comments";
   }
+
+  // const handleDelete = (event) => {
+  //   const commentId = event.target.value; // Extract the comment ID from the event object
+  //   deleteComment(commentId)
+  //     .then(() => 
+  //     {
+  //       setCurrentComments((prevComments) =>
+  //         prevComments.filter((comment) => comment.comment_id !== commentId)
+  //       );
+  //     })
+  //     .catch((err) => {
+  //       // Handle error
+  //     });
+  // };
   
+  const handleDeleteComment = (comment_id) => {
+    setCurrentComments((comments) => {
+      return comments.filter((comment) => {
+        return comment.comment_id !== comment_id;
+      });
+    });
+    deleteComment(comment_id);
+  };
+
+
   if (isLoading) {
     return <h2> Comments are loading </h2>;
   } else {
     return (
       <section>
-         <CommentAdder
+        <CommentAdder
           setShowComments={setShowComments}
           setCurrentComments={setCurrentComments}
         />
@@ -50,12 +83,21 @@ function Comments({ review_id }) {
             {currentComments.map((comment) => {
               const date = new Date(comment.created_at);
               const formattedDate = date.toLocaleString("en-GB");
+              const incorrectUser = comment.author !== userId;
+
               return (
-                <li key={comment.comment_id}>
+                <li key={comment.comment_id} className="commentsList">
                   <p>{comment.author}</p>
                   <p>{comment.body}</p>
                   <p>{comment.votes}</p>
                   <p>Posted at: {formattedDate}</p>
+                  <button
+                    value={comment.comment_id}
+                    onClick={()=>{handleDeleteComment(comment.comment_id)}}
+                    disabled={incorrectUser}
+                  >
+                    Delete Comment
+                  </button>
                 </li>
               );
             })}
