@@ -12,7 +12,7 @@ export const getReviews = (category, sort_by, order) => {
       return data.review;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
 };
 
@@ -22,7 +22,7 @@ export const getReviewId = (review_id) => {
       return review.data;
     })
     .catch((err) => {
-      // console.log(err);
+      return err;
     });
 };
 
@@ -32,18 +32,17 @@ export const getComments = (review_id) => {
       return response.data.comments;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
 };
 
 export const getUsers = () => {
   return GamesApi.get("/users")
     .then((users) => {
-      // console.log(users)
       return users.data;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
 };
 
@@ -56,16 +55,20 @@ export const postComment = (review_id, body) => {
       return response.data;
     })
     .catch((err) => {
-      console.log(err);
+      return err;
     });
 };
 
 export const patchVotes = (review_id) => {
-  return GamesApi.patch(`/reviews/${review_id}`, { inc_votes: 1 }).then(
-    (response) => {
+  return GamesApi.patch(`/reviews/${review_id}`, {
+    inc_votes: 1,
+  })
+    .then((response) => {
       return response.data.review;
-    }
-  );
+    })
+    .catch((err) => {
+      return err;
+    });
 };
 
 export const deleteComment = (comment_id) => {
