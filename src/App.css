@@ -277,4 +277,67 @@ body {
 
 /* Media Queries */
 
-/* Error Handling */
+
+/* Media Queries --------------------------------------*/
+
+/* @media only screen and (min-width: 425px) {
+  .ReviewCard,
+  .singleReviewCard {
+    max-width: 410px;
+  }
+
+  .reviewsList {
+    align-items: center;
+  }
+
+  .singleReviewContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  .userCard,
+  .highlightUserCard {
+    width: 275px;
+  }
+
+  .usersList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+  }
+}
+
+@media only screen and (min-width: 852px) {
+  .reviewsList {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .ReviewCard {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width: 1164px) {
+  .usersList {
+    justify-content: space-evenly;
+  }
+
+  .reviewsList {
+    justify-content: space-evenly;
+  }
+
+  .ReviewCard,
+  .singleReviewCard {
+    max-width: 500px;
+  }
+} */
