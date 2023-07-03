@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getReviewId } from "../../api";
+import { getReviewId } from "../../utils/api";
 import { useState } from "react";
 import Votes from "./Votes";
 import Comments from "./Comments";
@@ -26,7 +26,7 @@ function ReviewCard({ userId }) {
     return <h2> Loading Review Card...</h2>;
   } else {
     return (
-      <div >
+      <div>
         <ul className="ReviewCardSingle">
           <li>
             <img
@@ -39,8 +39,8 @@ function ReviewCard({ userId }) {
             <p className="ReviewBody">{review.review_body}</p>
             <p className="ReviewDesigner">Owner: {review.owner}</p>
           </li>
-        <Votes review_id={review.review_id} review={review} />
-        <Comments userId={userId} review_id={review_id} />
+          <Votes review_id={review.review_id} review={review} />
+          <Comments userId={userId} review_id={review_id} />
         </ul>
       </div>
     );

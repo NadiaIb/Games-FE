@@ -35,7 +35,6 @@ export const getComments = (review_id) => {
       console.log(err);
     });
 };
-// app.get("/api/users", getUsers)
 
 export const getUsers = () => {
   return GamesApi.get("/users")
@@ -73,15 +72,3 @@ export const deleteComment = (comment_id) => {
   console.log("Deleting comment with ID:", comment_id);
   return GamesApi.delete(`/comments/${comment_id}`);
 };
-
-// export const deleteComment = (comment_id) => {
-//   return GamesApi.delete(`/comments/${comment_id}`)
-//   .then(
-//     (response) => {
-//       console.log(response)
-//       return response.data
-//     })
-//     .catch((err)=> {
-//       console.log(err)
-//     })
-//   }

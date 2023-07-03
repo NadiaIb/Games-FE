@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { patchVotes } from "../../api";
+import { patchVotes } from "../../utils/api";
 
 function Votes({ review_id, review }) {
   const [voteChange, setVoteChange] = useState(0);
@@ -7,8 +7,7 @@ function Votes({ review_id, review }) {
 
   const handleVotes = (idNum) => {
     setVoteChange((currVote) => currVote + 1);
-    patchVotes(idNum)
-    .catch((err) => {
+    patchVotes(idNum).catch((err) => {
       setVoteChange((currVote) => currVote - 1);
       setErrorStatus(true);
     });
@@ -20,7 +19,8 @@ function Votes({ review_id, review }) {
 
   return (
     <section>
-      <button className="likeButton"
+      <button
+        className="likeButton"
         onClick={() => {
           handleVotes(review_id);
         }}

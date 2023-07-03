@@ -12,7 +12,7 @@ function NavBar({ userId }) {
           <Link to="/reviews">Reviews</Link>
         </li>
       </ul>
-        <p className="user"> User: {userId}</p>
+      <p className="user"> User: {userId}</p>
     </nav>
   );
 }

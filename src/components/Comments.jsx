@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import { getComments, deleteComment } from "../../api";
+import { getComments, deleteComment } from "../../utils/api";
 import CommentAdder from "./CommentAdder";
 
-function Comments({
-  review_id,
-  userId
-}) {
+function Comments({ review_id, userId }) {
   const [showComments, setShowComments] = useState(false);
   const [currentComments, setCurrentComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -29,8 +26,7 @@ function Comments({
   if (!showComments) {
     if (currentComments.length === 1) {
       buttonText = `Show ${currentComments.length} comment`;
-    }
-    else if (currentComments.length > 1) {
+    } else if (currentComments.length > 1) {
       buttonText = `Show ${currentComments.length} comments`;
     } else {
       buttonText = "Be the first to add a comment";
@@ -39,7 +35,6 @@ function Comments({
     buttonText = "Hide comments";
   }
 
-  
   const handleDeleteComment = (comment_id) => {
     setCurrentComments((comments) => {
       return comments.filter((comment) => {
@@ -48,7 +43,6 @@ function Comments({
     });
     deleteComment(comment_id);
   };
-
 
   if (isLoading) {
     return <h2> Comments are loading </h2>;
@@ -67,14 +61,19 @@ function Comments({
               const incorrectUser = comment.author !== userId;
 
               return (
-                <li key={comment.comment_id} className="commentsList containInDiv spacing">
+                <li
+                  key={comment.comment_id}
+                  className="commentsList containInDiv spacing"
+                >
                   <p>User: {comment.author}</p>
                   <p>{comment.body}</p>
                   <p>Likes: {comment.votes}</p>
                   <p>Posted at: {formattedDate}</p>
                   <button
                     value={comment.comment_id}
-                    onClick={()=>{handleDeleteComment(comment.comment_id)}}
+                    onClick={() => {
+                      handleDeleteComment(comment.comment_id);
+                    }}
                     disabled={incorrectUser}
                   >
                     Delete Comment
@@ -84,7 +83,9 @@ function Comments({
             })}
           </ul>
         )}
-        <button className="commentsButtons" onClick={handleClick}>{buttonText}</button>
+        <button className="commentsButtons" onClick={handleClick}>
+          {buttonText}
+        </button>
       </section>
     );
   }

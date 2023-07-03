@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { postComment } from "../../api";
+import { postComment } from "../../utils/api";
 import { useParams } from "react-router-dom";
 
 function CommentAdder({ setShowComments, setCurrentComments }) {
@@ -12,7 +12,7 @@ function CommentAdder({ setShowComments, setCurrentComments }) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if((/^\s/).test(userComment)){
+    if (/^\s/.test(userComment)) {
       alert("Please enter a valid comment.");
       return;
     }
@@ -46,16 +46,22 @@ function CommentAdder({ setShowComments, setCurrentComments }) {
       </p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="userComment"></label>
-        <textarea className="containInDiv"
+        <textarea
+          className="containInDiv"
           onChange={handleChange}
           name="Comment"
           id="userComment"
           cols="50"
           rows="4"
-          required value={userComment}
+          required
+          value={userComment}
           placeholder="What are your thoughts?"
         ></textarea>
-        <button className="commentsButtons" type="submit" disabled={isSubmitting}>
+        <button
+          className="commentsButtons"
+          type="submit"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </form>
