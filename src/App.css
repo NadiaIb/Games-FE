@@ -275,15 +275,4 @@ body {
   margin-bottom: 3rem;
 }
 
-/* Media Queries */
 
-@media (min-width: 900px) {
-  .homePageFlex {
-    margin: 0 2%;
-  }
-}
-@media (min-width: 1600px) {
-  .homePageFlex {
-    margin: 0 4%;
-  }
-}
