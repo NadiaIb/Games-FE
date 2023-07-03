@@ -30,7 +30,7 @@ function Comments({
     if (currentComments.length === 1) {
       buttonText = `Show ${currentComments.length} comment`;
     }
-    if (currentComments.length > 1) {
+    else if (currentComments.length > 1) {
       buttonText = `Show ${currentComments.length} comments`;
     } else {
       buttonText = "Be the first to add a comment";
@@ -67,10 +67,10 @@ function Comments({
               const incorrectUser = comment.author !== userId;
 
               return (
-                <li key={comment.comment_id} className="commentsList">
-                  <p>{comment.author}</p>
+                <li key={comment.comment_id} className="commentsList containInDiv spacing">
+                  <p>User: {comment.author}</p>
                   <p>{comment.body}</p>
-                  <p>{comment.votes}</p>
+                  <p>Likes: {comment.votes}</p>
                   <p>Posted at: {formattedDate}</p>
                   <button
                     value={comment.comment_id}
@@ -84,7 +84,7 @@ function Comments({
             })}
           </ul>
         )}
-        <button onClick={handleClick}>{buttonText}</button>
+        <button className="commentsButtons" onClick={handleClick}>{buttonText}</button>
       </section>
     );
   }

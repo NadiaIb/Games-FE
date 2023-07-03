@@ -10,25 +10,40 @@
   box-sizing: border-box;
 }
 
+/* .background-img {
+  background-image: url("../src/img/gamesBackground.png");
+  background-size: 20%;
+} */
+
 body {
-  background-image: url("../src/gamesBackground.png");
-  height: 100%;
-  background-position: center;
+  background-image: url("../src/img/gamesBackground.png");
+  background-size: 60%;
 }
-/* :root? */
+
+/* body {
+  background-color: rgb(254, 217, 224);
+} */
 
 /* Home */
+
+.homePageFlex {
+  margin: auto;
+  width: 50%;
+  padding: 20px;
+}
 .homePage {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  margin-top: 1rem;
-  display: inline-block;
-  flex-direction: column;
   border-radius: 20px;
   background-color: rgba(198, 226, 233);
   box-shadow: 1px 1px 5px 1px black;
   list-style-type: none;
-  font-size: 20px;
+  font-size: 25px;
+  padding: 20px;
+}
+
+.homeImg {
+  margin-top: 20px;
+  width: 90%;
+  border-radius: 20px;
 }
 
 /* Header */
@@ -69,7 +84,23 @@ body {
   border-radius: 50%;
 }
 
-/* Reviews and Review*/
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  position: relative;
+  top: -50px;
+  margin-right: 1.5%;
+}
+
+/* Reviews*/
+
+.AllReviewsColor {
+  background-color: rgba(198, 226, 233, 1);
+  width: 30%;
+  margin-left: 36%;
+  border-radius: 20px;
+}
 
 .categoryItem {
   list-style-type: none;
@@ -81,8 +112,7 @@ body {
   width: 8rem;
   height: 5rem;
   box-shadow: 1px 1px 5px 1px #d9aad0;
-  display: flex;
-  align-items: center;
+  font-size: 15px;
 }
 
 .img {
@@ -102,6 +132,7 @@ body {
   background-color: rgba(198, 226, 233);
   box-shadow: 1px 1px 5px 1px black;
   list-style-type: none;
+  margin-bottom: 1rem;
 }
 
 .readFullReview {
@@ -118,17 +149,6 @@ body {
   padding: 0.5rem;
   text-decoration: none;
 }
-/* 
-.ReviewCard {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 30%;
-  border-radius: 20px;
-  background-color: rgba(198, 226, 233);
-  box-shadow: 1px 1px 5px 1px black;
-  list-style-type: none;
-}  */
 
 .ReviewTitle {
   padding: 0.5rem;
@@ -159,9 +179,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
 }
 
 .orderButton {
+  padding: 0.4rem;
   background-color: rgb(246, 183, 229);
   border-radius: 20px;
   font-size: 16px;
@@ -173,56 +197,72 @@ body {
 }
 
 .sortButton {
+  padding: 0.5rem;
+  border-color: #d9aad0;
+  border-radius: 2rem;
+  box-shadow: 5px 5px 5px #d9aad0;
   font-size: 16px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: bold;
   display: flex;
   margin-left: 20px;
 }
 
 /* ReviewCard */
 .ReviewCardSingle {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  margin-top: 2rem;
+  list-style: none;
+  margin: auto;
+  width: 80%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  flex-direction: column;
   border-radius: 20px;
   background-color: rgba(198, 226, 233);
   box-shadow: 1px 1px 5px 1px black;
-
-  /* margin-left: 9rem;
-  margin-right: 9rem;
-  margin-top: 1rem;
-  display: inline-block;
-  flex-direction: column;
-  border-radius: 20px;
-  background-color: rgba(198, 226, 233);
-  box-shadow: 1px 1px 5px 1px black;
-  list-style-type: none; */
+  overflow: hidden;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
-/* Comments */
+/* Comments & CommentAdder */
 .commentsList {
   margin-top: 1rem;
+  padding: 0.5rem;
   border-radius: 20px;
-  background-color: #d9aad0;
+  background-color: rgb(241, 241, 239);
   box-shadow: 1px 1px 5px 1px black;
   list-style-type: none;
 }
 
-/* CommentAdder */
+.containInDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.commentsButtons {
+  background-color: #d9aad0;
+  border-radius: 20px;
+  padding: 0.5rem;
+  text-decoration: none;
+  margin: 1rem;
+}
+
+.spacing {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  line-height: 25px;
+}
+
+/* Votes */
+.likeButton {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
 
 /* Users */
-
-.usersSize {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  justify-content: space-evenly;
-}
 
 .userImg {
   max-height: 219px;

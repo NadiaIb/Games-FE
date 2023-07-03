@@ -46,7 +46,7 @@ function CommentAdder({ setShowComments, setCurrentComments }) {
       </p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="userComment"></label>
-        <textarea
+        <textarea className="containInDiv"
           onChange={handleChange}
           name="Comment"
           id="userComment"
@@ -55,7 +55,7 @@ function CommentAdder({ setShowComments, setCurrentComments }) {
           required value={userComment}
           placeholder="What are your thoughts?"
         ></textarea>
-        <button type="submit" disabled={isSubmitting}>
+        <button className="commentsButtons" type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </form>

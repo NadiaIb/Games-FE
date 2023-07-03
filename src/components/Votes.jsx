@@ -20,7 +20,7 @@ function Votes({ review_id, review }) {
 
   return (
     <section>
-      <button
+      <button className="likeButton"
         onClick={() => {
           handleVotes(review_id);
         }}

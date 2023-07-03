@@ -104,7 +104,7 @@ function Reviews() {
   } else {
     return (
       <section>
-        <div className="sortContainer">
+        <div className="sortContainer" >
           {categories.map((category) => (
             <button
               className="categoryItem"
@@ -138,7 +138,7 @@ function Reviews() {
             ⬇
           </button>
         </div>
-        <h2> All Reviews ({listReviews.length}) </h2>
+        <h2 className="AllReviewsColor"> All Reviews ({listReviews.length}) </h2>
         <ul>
           {listReviews.map((review) => {
             return (

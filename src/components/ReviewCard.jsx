@@ -26,8 +26,8 @@ function ReviewCard({ userId }) {
     return <h2> Loading Review Card...</h2>;
   } else {
     return (
-      <div className="ReviewCard">
-        <ul>
+      <div >
+        <ul className="ReviewCardSingle">
           <li>
             <img
               className="img"
@@ -39,9 +39,9 @@ function ReviewCard({ userId }) {
             <p className="ReviewBody">{review.review_body}</p>
             <p className="ReviewDesigner">Owner: {review.owner}</p>
           </li>
-        </ul>
         <Votes review_id={review.review_id} review={review} />
         <Comments userId={userId} review_id={review_id} />
+        </ul>
       </div>
     );
   }
