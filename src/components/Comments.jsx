@@ -45,7 +45,7 @@ function Comments({ review_id, userId }) {
   };
 
   if (isLoading) {
-    return <h2> Comments are loading </h2>;
+    return <h2 className="commentsButtons"> Comments are loading </h2>;
   } else {
     return (
       <section>

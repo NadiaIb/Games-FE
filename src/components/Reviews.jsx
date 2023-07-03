@@ -100,7 +100,7 @@ function Reviews() {
   }, [sortByQuery, orderQuery, categoryQuery]);
 
   if (isLoadingReviews) {
-    return <h2>Loading Reviews...</h2>;
+    return <h2 className="commentsButtons">Loading Reviews...</h2>;
   } else {
     return (
       <section>

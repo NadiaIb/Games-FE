@@ -23,7 +23,7 @@ function ReviewCard({ userId }) {
   }, [review_id]);
 
   if (isLoading) {
-    return <h2> Loading Review Card...</h2>;
+    return <h2 className="commentsButtons"> Loading Review Card...</h2>;
   } else {
     return (
       <div>
