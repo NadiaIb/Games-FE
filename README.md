@@ -3,7 +3,7 @@
 ##   Overview
 This repo contains the front end code for the a games review website, you can view the back end repo [here](https://github.com/NadiaIb/GameGeek-BE)
 
-View the deployed Website: [GameGeek]()
+View the hosted Website: [GameGeek](https://main--gamegeek-review.netlify.app/)
 
 ## Features
 - Select from a range of games.
